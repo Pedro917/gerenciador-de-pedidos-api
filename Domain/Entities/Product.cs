@@ -8,5 +8,8 @@ namespace GerenciadorDePedidos.Domain.Entities
 {
     public sealed class Product: Entity
     {
+        public string Description { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public decimal Price { get; set; }
     }
 }
