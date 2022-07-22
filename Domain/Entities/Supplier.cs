@@ -13,5 +13,6 @@ namespace GerenciadorDePedidos.Domain.Entities
         public string Uf { get; set; }
         public string ContactEmail { get; set; }
         public string ContactName { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

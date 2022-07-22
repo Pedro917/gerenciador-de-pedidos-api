@@ -11,5 +11,6 @@ namespace GerenciadorDePedidos.Domain.Entities
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public decimal Price { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
