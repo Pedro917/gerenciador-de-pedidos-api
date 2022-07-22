@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\GerenciadorDePedidos.Domain.csproj" />
-    <ProjectReference Include="..\GerenciadorDePedidos.Application\GerenciadorDePedidos.Application.csproj" />
-    <ProjectReference Include="..\GerenciadorDePedidos.Infrastructure\GerenciadorDePedidos.Infrastructure.csproj" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IoC\" />
+    <ProjectReference Include="..\Domain\GerenciadorDePedidos.Domain.csproj" />
+    <ProjectReference Include="..\GerenciadorDePedidos.Application\GerenciadorDePedidos.Application.csproj" />
+    <ProjectReference Include="..\GerenciadorDePedidos.Infrastructure\GerenciadorDePedidos.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

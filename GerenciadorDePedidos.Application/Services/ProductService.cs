@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDePedidos.Application.Services
 {
-    internal class ProductService: IProductService
+    public class ProductService: IProductService
     {
         private readonly IProductRepository _ProductRepository;
         private readonly IMapper _mapper;

@@ -10,6 +10,6 @@ namespace GerenciadorDePedidos.Domain.Interfaces
         Task<Product> GetProductById(int id);
         Task<Product> CreateProduct(Product product);
         Task<Product> UpdateProduct(Product product);
-        Task<Product> RemoveProduct(Product product);
+        Task RemoveProduct(Product product);
     }
 }

@@ -13,6 +13,6 @@ namespace GerenciadorDePedidos.Domain.Interfaces
         Task<Order> GetOrderById(int id);
         Task<Order> CreateOrder(Order Order);
         Task<Order> UpdateOrder(Order Order);
-        Task<Order> RemoveOrder(Order Order);
+        Task RemoveOrder(Order Order);
     }
 }
