@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\GerenciadorDePedidos.Domain.csproj" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Domain\GerenciadorDePedidos.Domain.csproj" />
   </ItemGroup>
 
 </Project>
