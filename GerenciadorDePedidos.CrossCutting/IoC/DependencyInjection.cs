@@ -20,13 +20,8 @@ namespace GerenciadorDePedidos.CrossCutting.IoC
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            #region EF config
-            string connectionString = configuration["ConnectionStrings:DbConnection"];
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseNpgsql(connectionString);
-            });
+            #region EF Config
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration["ConnectionStrings:DbConnection"]));
             #endregion
 
             #region Container DI
@@ -39,13 +34,7 @@ namespace GerenciadorDePedidos.CrossCutting.IoC
             #endregion
 
             #region AutoMapper configuration
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AllowNullCollections = true;
-                cfg.AddProfile(new AutoMapping());
-            });
-            IMapper mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddAutoMapper(typeof(AutoMapping));
             #endregion
 
             return services;

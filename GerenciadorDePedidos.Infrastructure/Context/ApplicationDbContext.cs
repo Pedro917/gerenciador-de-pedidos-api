@@ -10,7 +10,7 @@ namespace GerenciadorDePedidos.Infrastructure.Context
 {
     public class ApplicationDbContext: DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions): base(dbContextOptions)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
 
         }
@@ -19,10 +19,10 @@ namespace GerenciadorDePedidos.Infrastructure.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
+
     }
 }
