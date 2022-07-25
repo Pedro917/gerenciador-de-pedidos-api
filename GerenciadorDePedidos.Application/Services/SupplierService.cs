@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GerenciadorDePedidos.Application.DTOs;
 using GerenciadorDePedidos.Application.Interfaces;
+using GerenciadorDePedidos.Application.Utilities;
 using GerenciadorDePedidos.Domain.Entities;
 using GerenciadorDePedidos.Domain.Interfaces;
 using System.Collections.Generic;
@@ -11,11 +12,15 @@ namespace GerenciadorDePedidos.Application.Services
     public class SupplierService : ISupplierService
     {
         private readonly ISupplierRepository _supplierRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
 
-        public SupplierService(IMapper mapper, ISupplierRepository supplierRepository)
+        public SupplierService(IMapper mapper, ISupplierRepository supplierRepository, IOrderRepository orderRepository, IProductRepository productRepository)
         {
             _supplierRepository = supplierRepository;
+            _orderRepository = orderRepository;
+            _productRepository = productRepository;
             _mapper = mapper;
         }
 
@@ -49,6 +54,19 @@ namespace GerenciadorDePedidos.Application.Services
             var supplier = _mapper.Map<Supplier>(supplierDto);
             await _supplierRepository.UpdateSupplier(supplier);
             return await GetById(supplier.Id);
+        }
+
+        public async Task<IList<OrderDTO>> GetOrdersBySupplier(int id)
+        {
+            var orders = await _supplierRepository.GetOrdersBySupplier(id);
+
+            foreach (var order in orders)
+            {
+                order.Product = await _productRepository.GetProductById(order.ProductId);
+                order.TotalAmount = PriceUtilities.CalculateTotalAmount(order);
+            }
+
+            return _mapper.Map<List<OrderDTO>>(orders);
         }
     }
 }

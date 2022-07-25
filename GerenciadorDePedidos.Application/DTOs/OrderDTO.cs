@@ -19,10 +19,12 @@ namespace GerenciadorDePedidos.Application.DTOs
 
         [Required]
         public int ProductId { get; set; }
+        public ProductDTO Product { get; set; }
 
         [Required(ErrorMessage = "O campo Quantidade de produtos é obrigatório")]
         [Range(1, 9999)]
         public int Quantity { get; set; }
+        public decimal TotalAmount { get; set; }
 
     }
 }

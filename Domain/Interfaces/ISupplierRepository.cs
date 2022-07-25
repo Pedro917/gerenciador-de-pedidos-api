@@ -13,5 +13,6 @@ namespace GerenciadorDePedidos.Domain.Interfaces
         Task<Supplier> CreateSupplier(Supplier supplier);
         Task<Supplier> UpdateSupplier(Supplier supplier);
         Task RemoveSupplier(Supplier supplier);
+        Task<IList<Order>> GetOrdersBySupplier(int id);
     }
 }

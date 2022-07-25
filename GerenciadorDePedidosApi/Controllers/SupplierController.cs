@@ -39,6 +39,13 @@ namespace GerenciadorDePedidos.Api.Controllers
             }
         }
 
+        [HttpGet("{supplier_id}/orders")]
+        public async Task<ActionResult<SupplierDTO>> GetOrdersBySupplier(int supplier_id)
+        {
+            var orders = await _supplierService.GetOrdersBySupplier(supplier_id);
+            return Ok(orders);
+        }
+
         [HttpPost]
         public async Task<ActionResult<SupplierDTO>> Add([FromBody] SupplierDTO supplierDTO)
         {

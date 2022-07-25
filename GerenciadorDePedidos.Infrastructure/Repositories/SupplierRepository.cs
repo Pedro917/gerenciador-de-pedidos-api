@@ -47,5 +47,10 @@ namespace GerenciadorDePedidos.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
             return await GetSupplierById(supplier.Id);
         }
+
+        public async Task<IList<Order>> GetOrdersBySupplier(int id)
+        {
+            return await _dbContext.Orders.Where(x => x.SupplierId == id).ToListAsync();
+        }
     }
 }

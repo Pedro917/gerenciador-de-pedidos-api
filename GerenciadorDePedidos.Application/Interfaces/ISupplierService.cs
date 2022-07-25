@@ -13,5 +13,6 @@ namespace GerenciadorDePedidos.Application.Interfaces
         Task<SupplierDTO> Add(SupplierDTO supplierDto);
         Task<SupplierDTO> Update(SupplierDTO supplierDto);
         Task Remove(int id);
+        Task<IList<OrderDTO>> GetOrdersBySupplier(int id);
     }
 }
