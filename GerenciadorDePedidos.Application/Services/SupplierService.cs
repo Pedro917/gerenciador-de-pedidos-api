@@ -12,14 +12,12 @@ namespace GerenciadorDePedidos.Application.Services
     public class SupplierService : ISupplierService
     {
         private readonly ISupplierRepository _supplierRepository;
-        private readonly IOrderRepository _orderRepository;
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
 
-        public SupplierService(IMapper mapper, ISupplierRepository supplierRepository, IOrderRepository orderRepository, IProductRepository productRepository)
+        public SupplierService(IMapper mapper, ISupplierRepository supplierRepository, IProductRepository productRepository)
         {
             _supplierRepository = supplierRepository;
-            _orderRepository = orderRepository;
             _productRepository = productRepository;
             _mapper = mapper;
         }
